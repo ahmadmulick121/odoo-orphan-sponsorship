@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_brevo" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.brevo</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Brevo Email" string="Brevo Email" data-key="orphan_brevo_mail">
+                    <h2>Brevo HTTPS API Configuration</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="brevo_api_key" string="Brevo API Key"/>
+                                <div class="text-muted">API key from Brevo dashboard — starts with xkeysib-</div>
+                                <div class="content-group">
+                                    <field name="brevo_api_key" password="True"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="brevo_sender_email" string="Sender Email"/>
+                                <div class="text-muted">From-address for outgoing emails (must be a verified sender in Brevo)</div>
+                                <div class="content-group">
+                                    <field name="brevo_sender_email"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="brevo_sender_name" string="Sender Name"/>
+                                <div class="text-muted">Display name shown to recipients</div>
+                                <div class="content-group">
+                                    <field name="brevo_sender_name"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
