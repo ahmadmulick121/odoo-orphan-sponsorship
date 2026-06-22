@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: orphan_db
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo123
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  odoo:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    environment:
+      DB_HOST: db
+      DB_USER: odoo
+      DB_PASSWORD: odoo123
+      DB_NAME: orphan_db
+    volumes:
+      - odoo_data:/var/lib/odoo
+
+volumes:
+  pgdata:
+  odoo_data:

@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: odoo-orphan-sponsorship
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: orphan-db
+          property: host
+      - key: DB_USER
+        fromDatabase:
+          name: orphan-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: orphan-db
+          property: password
+      - key: DB_NAME
+        fromDatabase:
+          name: orphan-db
+          property: database
+
+databases:
+  - name: orphan-db
+    plan: free
+    databaseName: orphan_db
+    user: odoo
