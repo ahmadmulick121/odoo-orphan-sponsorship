@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_fifo_assignment" model="ir.actions.server">
+            <field name="name">Run FIFO Assignment</field>
+            <field name="model_id" ref="orphan_sponsorship.model_orphan_sponsorship_orphan"/>
+            <field name="binding_model_id" ref="orphan_sponsorship.model_orphan_sponsorship_orphan"/>
+            <field name="binding_type">action</field>
+            <field name="state">code</field>
+            <field name="code">env['orphan.sponsorship.orphan'].assign_fifo()</field>
+        </record>
+    </data>
+</odoo>

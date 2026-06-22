@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="brevo_api_key_param" model="ir.config_parameter">
+            <field name="key">orphan_brevo_mail.api_key</field>
+            <field name="value"></field>
+        </record>
+        <record id="brevo_sender_email_param" model="ir.config_parameter">
+            <field name="key">orphan_brevo_mail.sender_email</field>
+            <field name="value">noreply@example.com</field>
+        </record>
+        <record id="brevo_sender_name_param" model="ir.config_parameter">
+            <field name="key">orphan_brevo_mail.sender_name</field>
+            <field name="value">Orphan Sponsorship</field>
+        </record>
+    </data>
+</odoo>

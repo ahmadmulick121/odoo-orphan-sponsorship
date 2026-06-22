@@ -1,0 +1,20 @@
+{
+    'name': 'Orphan Sponsorship',
+    'version': '16.0.1.0.0',
+    'summary': 'Manage orphan sponsorships with FIFO donor matching and email notifications',
+    'author': 'TeamCoopTech',
+    'category': 'Non-profit',
+    'depends': ['base', 'mail'],
+    'data': [
+        'security/ir.model.access.csv',
+        'data/mail_template.xml',
+        'data/server_action.xml',
+        'views/orphan_views.xml',
+        'views/donor_views.xml',
+        'views/demo_views.xml',
+        'views/menu.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'license': 'LGPL-3',
+}

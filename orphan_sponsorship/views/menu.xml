@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_orphan_root" name="Orphan Sponsorship" sequence="10"/>
+
+    <menuitem id="menu_orphans" name="Orphans"
+        parent="menu_orphan_root"
+        action="action_orphan_list"
+        sequence="10"/>
+
+    <menuitem id="menu_donors" name="Donors"
+        parent="menu_orphan_root"
+        action="action_donor_list"
+        sequence="20"/>
+
+    <menuitem id="menu_demo" name="Demo Control Panel"
+        parent="menu_orphan_root"
+        action="action_demo"
+        sequence="30"/>
+
+    <!-- Email Notifications: list of all mail.mail records for orphan model -->
+    <record id="action_email_notifications" model="ir.actions.act_window">
+        <field name="name">Email Notifications</field>
+        <field name="res_model">mail.mail</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('model','=','orphan.sponsorship.orphan')]</field>
+    </record>
+
+    <menuitem id="menu_email_notifications" name="Email Notifications"
+        parent="menu_orphan_root"
+        action="action_email_notifications"
+        sequence="40"/>
+</odoo>

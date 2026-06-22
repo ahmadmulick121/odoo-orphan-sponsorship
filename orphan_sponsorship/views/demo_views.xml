@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_demo_form" model="ir.ui.view">
+        <field name="name">demo.form</field>
+        <field name="model">orphan.sponsorship.demo</field>
+        <field name="arch" type="xml">
+            <form string="Demo Control Panel" create="false" delete="false">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Orphan Sponsorship — Demo Control Panel</h1>
+                        <p class="text-muted">Follow the steps below in order to run a complete demonstration.</p>
+                    </div>
+
+                    <group string="Step 1 — Load Fresh Demo Data">
+                        <div colspan="2">
+                            <p>Creates <strong>10 orphans</strong> and <strong>10 donors</strong>. First 5 donors are Active, last 5 are Pending.</p>
+                            <button name="action_load_demo_data" type="object" string="Load Demo Data" class="btn-primary"/>
+                        </div>
+                    </group>
+
+                    <group string="Step 2 — Assign First 5 Donors (FIFO)">
+                        <div colspan="2">
+                            <p>Runs FIFO matching for the 5 active donors. After this, 5 orphans will be Sponsored and 5 will remain Unassigned.</p>
+                            <button name="action_run_fifo_assignment" type="object" string="Run FIFO Assignment + Send Emails" class="btn-success"/>
+                        </div>
+                    </group>
+
+                    <group string="Step 3 — Activate Remaining 5 Donors">
+                        <div colspan="2">
+                            <p>Activates the 5 pending donors so they become eligible. Then run FIFO again to assign the remaining 5 orphans.</p>
+                            <button name="action_activate_remaining_donors" type="object" string="Activate Remaining 5 Donors" class="btn-info"/>
+                            <button name="action_run_fifo_assignment" type="object" string="Run FIFO Assignment" class="btn-success"/>
+                        </div>
+                    </group>
+
+                    <group string="Send Email Notifications Manually">
+                        <div colspan="2">
+                            <p>Re-sends assignment emails to all sponsored donors. Each donor receives the assigned orphan's name, age, gender, and location.</p>
+                            <button name="action_send_emails" type="object" string="Send Assignment Emails" class="btn-warning"/>
+                        </div>
+                    </group>
+
+                    <group string="Reset Demo">
+                        <div colspan="2">
+                            <p>Resets all assignments and restores donors to the original 5 Active / 5 Pending state.</p>
+                            <button name="action_reset" type="object" string="Reset Assignments" class="btn-danger"/>
+                        </div>
+                    </group>
+
+                    <group string="System Information">
+                        <div colspan="2">
+                            <ul>
+                                <li><strong>10 Orphans</strong> — children registered across Pakistan</li>
+                                <li><strong>10 Donors</strong> — 5 active initially, 5 activated in Step 3</li>
+                                <li><strong>FIFO Logic</strong> — oldest registered orphan is matched first</li>
+                                <li><strong>Email</strong> — donor receives a styled notification with orphan name, age, gender, and location</li>
+                                <li><strong>Delivery</strong> — emails sent via Brevo HTTPS API (configure in Settings → Brevo Email)</li>
+                            </ul>
+                        </div>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_demo" model="ir.actions.act_window">
+        <field name="name">Demo Control Panel</field>
+        <field name="res_model">orphan.sponsorship.demo</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+
+    <function model="orphan.sponsorship.demo" name="create">
+        <value eval="[{'name': 'Demo Control Panel'}]"/>
+    </function>
+</odoo>
